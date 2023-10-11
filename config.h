@@ -889,7 +889,7 @@ static const Key on_empty_keys[] = {
 #endif // ON_EMPTY_KEYS_PATCH
 */
 
-static const char* myterm[] = {"alacritty", NULL};
+static const char* myterm[] = {"st", NULL};
 static const char* browser[] = {"Brave", NULL};
 
 
