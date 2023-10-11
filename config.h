@@ -855,18 +855,11 @@ static const char *xkb_layouts[]  = {
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 #endif // NODMENU_PATCH
 static const char *dmenucmd[] = {
-	"dmenu_run",
-	#if !NODMENU_PATCH
-	"-m", dmenumon,
-	#endif // NODMENU_PATCH
-	"-fn", dmenufont,
-	"-nb", normbgcolor,
-	"-nf", normfgcolor,
-	"-sb", selbgcolor,
-	"-sf", selfgcolor,
-	#if BAR_DMENUMATCHTOP_PATCH
-	topbar ? NULL : "-b",
-	#endif // BAR_DMENUMATCHTOP_PATCH
+	"rofi",
+	"-theme", 
+	"arthur", 
+	"-show", 
+	"drun", 
 	NULL
 };
 static const char *termcmd[]  = { "st", NULL };
@@ -904,7 +897,7 @@ static const Key keys[] = {
 	/* modifier                     key            function                argument */
 	#if KEYMODES_PATCH
 	{ Mod4Mask,                       XK_Escape,     setkeymode,             {.ui = COMMANDMODE} },
-	{ Mod4Masko|ShiftMask,            XK_b,          spawn,                  {.v = browser} },
+	{ Mod4Mask|ShiftMask,             XK_b,          spawn,                  {.v = browser} },
 	#endif // KEYMODES_PATCH
 	{ Mod4Mask,                       XK_p,          spawn,                  {.v = dmenucmd } },
 	{ Mod4Mask,	                  XK_Return,     spawn,                  {.v = myterm } },
@@ -1012,13 +1005,13 @@ static const Key keys[] = {
 	{ MODKEY|Mod4Mask|ShiftMask,    XK_o,          incrogaps,              {.i = -1 } },
 	{ MODKEY|Mod4Mask,              XK_6,          incrihgaps,             {.i = +1 } },
 	{ MODKEY|Mod4Mask|ShiftMask,    XK_6,          incrihgaps,             {.i = -1 } },
-	{ MODKEY|Mod4Mask,              XK_7,          incrivgaps,             {.i = +1 } },
-	{ MODKEY|Mod4Mask|ShiftMask,    XK_7,          incrivgaps,             {.i = -1 } },
-	{ MODKEY|Mod4Mask,              XK_8,          incrohgaps,             {.i = +1 } },
+	{ MODKEY|Mod4Mask,              XK_c,          incrivgaps,             {.i = +1 } },
+	{ MODKEY|Mod4Mask|ShiftMask,    XK_v,          incrivgaps,             {.i = -1 } },
+	{ MODKEY|Mod4Mask,              XK_x,          incrohgaps,             {.i = +1 } },
 	{ MODKEY|Mod4Mask|ShiftMask,    XK_8,          incrohgaps,             {.i = -1 } },
 	{ MODKEY|Mod4Mask,              XK_9,          incrovgaps,             {.i = +1 } },
 	{ MODKEY|Mod4Mask|ShiftMask,    XK_9,          incrovgaps,             {.i = -1 } },
-	{ MODKEY|Mod4Mask,              XK_k,          togglegaps,             {1} },
+	{ MODKEY|ShiftMask,             XK_n,          togglegaps,             {10} },
 	{ MODKEY|Mod4Mask|ShiftMask,    XK_0,          defaultgaps,            {10} },
 	#endif // VANITYGAPS_PATCH
 	#if ALT_TAB_PATCH
