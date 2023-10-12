@@ -891,6 +891,7 @@ static const Key on_empty_keys[] = {
 
 static const char* myterm[] = {"st", NULL};
 static const char* browser[] = {"Brave", NULL};
+static const char* wallpaper[] = {"setwall", NULL};
 
 
 static const Key keys[] = {
@@ -901,6 +902,7 @@ static const Key keys[] = {
 	#endif // KEYMODES_PATCH
 	{ Mod4Mask,                       XK_p,          spawn,                  {.v = dmenucmd } },
 	{ Mod4Mask,	                  XK_Return,     spawn,                  {.v = myterm } },
+	{ Mod4Mask,	                  XK_v,          spawn,                  {.v = wallpaper } },
 	#if RIODRAW_PATCH
 	{ Mod4Mask|ControlMask,           XK_p,          riospawnsync,           {.v = dmenucmd } },
 	{ Mod4Mask|ControlMask,           XK_Return,     riospawn,               {.v = termcmd } },
