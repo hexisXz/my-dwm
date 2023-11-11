@@ -42,7 +42,7 @@ static const char *altbarclass           = "Polybar"; /* Alternate bar class nam
 static const char *altbarcmd             = "$HOME/bar.sh"; /* Alternate bar launch command */
 #endif // BAR_ANYBAR_PATCH
 #if BAR_HOLDBAR_PATCH
-static const int showbar                 = 0;   /* 0 means no bar */
+static const int showbar                 = 1;   /* 0 means no bar */
 #else
 static const int showbar                 = 1;   /* 0 means no bar */
 #endif // BAR_HOLDBAR_PATCH
@@ -855,11 +855,9 @@ static const char *xkb_layouts[]  = {
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 #endif // NODMENU_PATCH
 static const char *dmenucmd[] = {
-	"rofi",
-	"-theme", 
-	"arthur", 
-	"-show", 
-	"drun", 
+	"dmenu_run",
+	"-l", 
+	"20", 
 	NULL
 };
 static const char *termcmd[]  = { "st", NULL };
@@ -889,20 +887,26 @@ static const Key on_empty_keys[] = {
 #endif // ON_EMPTY_KEYS_PATCH
 */
 
-static const char* myterm[] = {"st", NULL};
-static const char* browser[] = {"Brave", NULL};
+/*static const char* myterm[] = {"st", NULL};
+static const char* browser[] = {"thorium-browser", NULL};
 static const char* wallpaper[] = {"setwall", NULL};
+static const char* menu[] = {"dmenu_run", "-l", "20",  NULL};
+*/
 
+static const char* volup[] = {"vol-up", NULL};
+static const char* voldn[] = {"vol-down", NULL};
 
 static const Key keys[] = {
 	/* modifier                     key            function                argument */
 	#if KEYMODES_PATCH
-	{ Mod4Mask,                       XK_Escape,     setkeymode,             {.ui = COMMANDMODE} },
-	{ Mod4Mask|ShiftMask,             XK_b,          spawn,                  {.v = browser} },
+	//{ Mod4Mask,                       XK_Escape,     setkeymode,             {.ui = COMMANDMODE} },
+	//{ Mod4Mask|ShiftMask,             XK_b,          spawn,                  {.v = browser} },
 	#endif // KEYMODES_PATCH
-	{ Mod4Mask,                       XK_p,          spawn,                  {.v = dmenucmd } },
-	{ Mod4Mask,	                  XK_Return,     spawn,                  {.v = myterm } },
-	{ Mod4Mask,	                  XK_v,          spawn,                  {.v = wallpaper } },
+	//{ Mod4Mask,                       XK_p,          spawn,                  {.v = menu } },
+	//{ Mod4Mask,	                    XK_Return,     spawn,                  {.v = myterm } },
+	//{ Mod4Mask,	                    XK_v,          spawn,                  {.v = wallpaper } },
+	{ Mod4Mask,                       XK_F6,          spawn,                  {.v = volup } },
+	{ Mod4Mask,                       XK_F5,          spawn,                  {.v = voldn } },
 	#if RIODRAW_PATCH
 	{ Mod4Mask|ControlMask,           XK_p,          riospawnsync,           {.v = dmenucmd } },
 	{ Mod4Mask|ControlMask,           XK_Return,     riospawn,               {.v = termcmd } },

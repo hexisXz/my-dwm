@@ -3,13 +3,15 @@ static const Block blocks[] = {
 	/*Icon*/	/*Command*/		/*Update Interval*/	/*Update Signal*/
 	{"", "update-dwm",		                 		       200,		0},
 
-        {"", "curl -sf 'https://wttr.in/Twinsburg,Ohio?format=%C,%t&lang=en'",	        60,		0},
+        {"", "~/my-dwm/dwmblocks/scripts/we",	                                60,		0},
 
-	{"Mem : ", "free -h | awk '/^Mem/ { print $3\"/\"$2 }' | sed s/i//g",	30,		0},
+	{"", "vo",                                                              0,              10},
 
-	{"", "date '+%b %d (%a) %I:%M%p'",					5,		0},
+	{"", "~/my-dwm/dwmblocks/scripts/date",					5,		0},
 
-	{"", "uname -sr",		                 			0,		0},
+	{"", "~/my-dwm/dwmblocks/scripts/bat",                                  3,		0},
+	
+	{"", "~/my-dwm/dwmblocks/scripts/kver",		                        0,		0},
 
 
 
